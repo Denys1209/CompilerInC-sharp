@@ -1,20 +1,21 @@
-﻿
-namespace D_Compiler_MyOwnLanguage_.CodeAnalysis
+﻿namespace D_Compiler_MyOwnLanguage_.CodeAnalysis;
+
+public enum SyntaxKind
 {
-    enum SyntaxKind
-    {
-        NumberToken,
-        WhitespaceToken,
-        PlusToken,
-        MinusToken,
-        StarToken,
-        SlashToken,
-        OpenParenthesisToken,
-        CloseParenthesisToken,
-        BadToken,
-        EndOfFileToken,
-        NumberExpression,
-        BinaryExpression,
-        ParenthesizedExpression
-    }
+    // Tokens
+    BadToken,
+    EndOfFileToken,
+    WhitespaceToken,
+    NumberToken,
+    PlusToken,
+    MinusToken,
+    StarToken,
+    SlashToken,
+    OpenParenthesisToken,
+    CloseParenthesisToken,
+
+    // Expression
+    NumberExpression,
+    BinaryExpression,
+    ParenthesizedExpression
 }

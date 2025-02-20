@@ -1,6 +1,6 @@
 ﻿namespace D_Compiler_MyOwnLanguage_.CodeAnalysis;
 
-sealed class ParenthesizedExpressionSyntax : ExpressionSyntax
+internal sealed class ParenthesizedExpressionSyntax : ExpressionSyntax
 {
     public ParenthesizedExpressionSyntax(SyntaxToken openParenthesisToken, ExpressionSyntax expression, SyntaxToken closeParenthesisToken)
     {

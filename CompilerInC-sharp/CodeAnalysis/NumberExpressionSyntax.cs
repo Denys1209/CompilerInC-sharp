@@ -1,6 +1,6 @@
 ﻿namespace D_Compiler_MyOwnLanguage_.CodeAnalysis;
 
-sealed class NumberExpressionSyntax : ExpressionSyntax
+internal sealed class NumberExpressionSyntax : ExpressionSyntax
 {
     public NumberExpressionSyntax(SyntaxToken numberToken)
     {

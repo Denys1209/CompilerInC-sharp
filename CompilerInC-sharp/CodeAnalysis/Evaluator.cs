@@ -1,6 +1,6 @@
 ﻿namespace D_Compiler_MyOwnLanguage_.CodeAnalysis;
 
-class Evaluator
+internal class Evaluator
 {
     private readonly ExpressionSyntax _root;
 

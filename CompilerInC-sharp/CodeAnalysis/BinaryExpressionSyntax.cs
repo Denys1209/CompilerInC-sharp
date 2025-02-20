@@ -1,6 +1,6 @@
 ﻿namespace D_Compiler_MyOwnLanguage_.CodeAnalysis;
 
-sealed class BinaryExpressionSyntax : ExpressionSyntax
+internal sealed class BinaryExpressionSyntax : ExpressionSyntax
 {
     public BinaryExpressionSyntax(ExpressionSyntax left, SyntaxToken operatorToken, ExpressionSyntax right)
     {
