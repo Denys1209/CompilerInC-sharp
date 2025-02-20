@@ -1,5 +1,5 @@
 ﻿
-namespace D_Compiler_MyOwnLanguage_.CodeAnalysis;
+namespace CompilerInC_sharp.CodeAnalysis;
 
 public abstract class SyntaxNode
 {

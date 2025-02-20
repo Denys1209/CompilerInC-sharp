@@ -1,4 +1,4 @@
-﻿namespace D_Compiler_MyOwnLanguage_.CodeAnalysis;
+﻿namespace CompilerInC_sharp.CodeAnalysis;
 
 internal sealed class BinaryExpressionSyntax : ExpressionSyntax
 {

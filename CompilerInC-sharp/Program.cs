@@ -1,4 +1,4 @@
-﻿using D_Compiler_MyOwnLanguage_.CodeAnalysis;
+﻿using CompilerInC_sharp.CodeAnalysis;
 
 class Program
 {
