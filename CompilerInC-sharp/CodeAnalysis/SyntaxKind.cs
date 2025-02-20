@@ -15,7 +15,7 @@ public enum SyntaxKind
     CloseParenthesisToken,
 
     // Expression
-    NumberExpression,
+    LiteralExpression,
     BinaryExpression,
     ParenthesizedExpression
 }

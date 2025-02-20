@@ -111,6 +111,6 @@ internal sealed class Parser
         }
 
         var numberToken = MatchToken(SyntaxKind.NumberToken);
-        return new NumberExpressionSyntax(numberToken);
+        return new LiteralExpressionSyntax(numberToken);
     }
 }
