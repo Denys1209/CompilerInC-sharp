@@ -29,7 +29,7 @@ internal sealed class Lexer
         _position++;
     }
 
-    public SyntaxToken NextToken()
+    public SyntaxToken Lex()
     {
         // <numbers>
         // + - * / ( )
