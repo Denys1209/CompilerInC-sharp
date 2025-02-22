@@ -1,4 +1,6 @@
-﻿namespace CompilerInC_sharp.CodeAnalysis;
+﻿using CompilerInC_sharp.CodeAnalysis.Syntax;
+
+namespace CompilerInC_sharp.CodeAnalysis;
 
 internal class Evaluator
 {

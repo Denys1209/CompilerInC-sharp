@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace CompilerInC_sharp.CodeAnalysis;
+namespace CompilerInC_sharp.CodeAnalysis.Syntax;
 
 
 
@@ -70,24 +70,24 @@ internal sealed class Parser
 
 
 
-    private ExpressionSyntax ParseExpression(int parentPrecedence = 0) 
+    private ExpressionSyntax ParseExpression(int parentPrecedence = 0)
     {
         ExpressionSyntax left;
         var unaryOperatorPrecedence = Current.Kind.GetUnaryOperatorPrecedence();
 
         if (unaryOperatorPrecedence != 0 && unaryOperatorPrecedence >= parentPrecedence)
-        { 
+        {
             var operatorToken = NextToken();
-            var operand = ParseExpression(unaryOperatorPrecedence); 
+            var operand = ParseExpression(unaryOperatorPrecedence);
             left = new UnaryExpressionSyntax(operatorToken, operand);
         }
-        else 
+        else
         {
             left = ParsePrimaryExpression();
         }
 
 
-        while (true) 
+        while (true)
         {
             var precedence = Current.Kind.GetBinaryOperatorPrecedence();
 

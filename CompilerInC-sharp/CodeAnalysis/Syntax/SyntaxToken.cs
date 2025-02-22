@@ -1,4 +1,4 @@
-﻿namespace CompilerInC_sharp.CodeAnalysis;
+﻿namespace CompilerInC_sharp.CodeAnalysis.Syntax;
 
 public sealed class SyntaxToken : SyntaxNode
 {

@@ -1,5 +1,4 @@
-﻿
-namespace CompilerInC_sharp.CodeAnalysis;
+﻿namespace CompilerInC_sharp.CodeAnalysis.Syntax;
 
 internal static class SyntaxFacts
 {

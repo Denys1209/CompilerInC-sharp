@@ -1,4 +1,5 @@
 ﻿using CompilerInC_sharp.CodeAnalysis;
+using CompilerInC_sharp.CodeAnalysis.Syntax;
 
 class Program
 {
