@@ -40,16 +40,16 @@ internal sealed class Binder
 
 
         var boundOperand = BindExpression(syntax.Operand);
-        var boundOperatorKind = BindUnaryOperatorKind(syntax.OperatorToken.Kind, boundOperand.Type);
+        var boundOperator = BoundUnaryOperator.Bind(syntax.OperatorToken.Kind, boundOperand.Type);
 
-        if (boundOperatorKind == null)
+        if (boundOperator == null)
         {
             _diagnostics.Add($"UNary operator '{syntax.OperatorToken.Text}' is not defined for type {boundOperand.Type}");
 
             return boundOperand;
         }
 
-        return new BoundUnaryExpression(boundOperatorKind.Value, boundOperand);
+        return new BoundUnaryExpression(boundOperator, boundOperand);
     }
 
     private BoundExpression BindBinaryExpression(BinaryExpressionSyntax syntax)
@@ -57,15 +57,15 @@ internal sealed class Binder
 
         var boundLeft = BindExpression(syntax.Left);
         var boundRight = BindExpression(syntax.Right);
-        var boundOperatorKind = BindBinaryOperator(syntax.OperatorToken.Kind, boundLeft.Type, boundRight.Type);
+        var boundOperator = BoundBinaryOperator.Bind(syntax.OperatorToken.Kind, boundLeft.Type, boundRight.Type);
 
-        if (boundOperatorKind == null)
+        if (boundOperator == null)
         {
             _diagnostics.Add($"UNary operator '{syntax.OperatorToken.Text}' is not defined for type {boundLeft.Type} and {boundRight.Type}");
 
             return boundLeft;
         }
-        return new BoundBinaryExpression(boundLeft, boundOperatorKind.Value, boundRight);
+        return new BoundBinaryExpression(boundLeft, boundOperator, boundRight);
     }
 
 
