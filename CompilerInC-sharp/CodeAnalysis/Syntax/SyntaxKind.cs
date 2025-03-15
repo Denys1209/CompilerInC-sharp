@@ -14,6 +14,7 @@ public enum SyntaxKind
     BangToken,
     AmpersandAmpersandToken,
     PipePipeToken,
+    EqualsEqualsToken,
     OpenParenthesisToken,
     CloseParenthesisToken,
 
@@ -27,4 +28,5 @@ public enum SyntaxKind
     UnaryExpression,
     BinaryExpression,
     ParenthesizedExpression,
+    BangEqualsToken,
 }

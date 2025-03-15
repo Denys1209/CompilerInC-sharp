@@ -8,4 +8,6 @@ enum BoundBinaryOperatorKind
     Division,
     LogicalOr,
     LogicalAnd,
+    Equals,
+    NotEquals,
 }
