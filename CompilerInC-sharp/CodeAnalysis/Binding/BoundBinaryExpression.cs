@@ -10,7 +10,7 @@ internal sealed class BoundBinaryExpression : BoundExpression
         
     }
 
-    public override BoundNodeKind Kind => BoundNodeKind.UnaryExpression;
+    public override BoundNodeKind Kind => BoundNodeKind.BinaryEpression;
     public override Type Type => Op.Type;
 
     public BoundExpression Left { get; }
