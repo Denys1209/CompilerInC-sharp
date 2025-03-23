@@ -1,5 +1,5 @@
 ﻿
-namespace CompilerInC_sharp.CodeAnalysis.Syntax;
+namespace Minks.CodeAnalysis.Syntax;
 
 internal static class SyntaxFacts
 {

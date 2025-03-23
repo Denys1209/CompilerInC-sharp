@@ -1,6 +1,7 @@
-﻿using CompilerInC_sharp.CodeAnalysis;
-using CompilerInC_sharp.CodeAnalysis.Binding;
-using CompilerInC_sharp.CodeAnalysis.Syntax;
+﻿using Minks.CodeAnalysis;
+using Minks.CodeAnalysis.Binding;
+using Minks.CodeAnalysis.Syntax;
+using Minsk.CodeAnalysis;
 
 class Program
 {
@@ -28,10 +29,10 @@ class Program
             }
 
             var syntaxTree = SyntaxTree.Parse(line);
-            var binder = new Binder();
-            var boundExpression = binder.BindExpression(syntaxTree.Root);
+            var compilation = new Compilation(syntaxTree);
+            var result = compilation.Evaluate();
 
-            var diagnostics = syntaxTree.Diagnostics.Concat(binder.Diagnostics).ToArray();
+            var diagnostics = result.Diagnostics;
 
 
 
@@ -44,18 +45,35 @@ class Program
 
             if (!diagnostics.Any())
             {
-                var e = new Evaluator(boundExpression);
-                var result = e.Evaluate();
-                Console.WriteLine(result);
+                Console.WriteLine(result.Value);
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
 
                 foreach (var diagnostic in syntaxTree.Diagnostics)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(diagnostic);
+                    Console.ResetColor();
 
-                Console.ResetColor();
+                    var prefix = line.Substring(0, diagnostic.Span.Start);
+                    var error = line.Substring(diagnostic.Span.Start, diagnostic.Span.Length);
+                    var suffix = line.Substring(diagnostic.Span.End);
+
+                    Console.Write("    ");
+                    Console.Write(prefix);
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine(error); 
+                    Console.ResetColor();
+
+                    Console.WriteLine(suffix);
+
+                    Console.WriteLine();
+
+                }
+
             }
         }
     }

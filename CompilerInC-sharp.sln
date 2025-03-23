@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompilerInC-sharp", "CompilerInC-sharp\CompilerInC-sharp.csproj", "{0D86D696-5C11-4BB4-8660-C85C9C88FA67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompilerInC-sharp", "CompilerInC-sharp\CompilerInC-sharp.csproj", "{0D86D696-5C11-4BB4-8660-C85C9C88FA67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minsk", "Minsk\Minsk.csproj", "{DF04B314-F24D-4986-9763-E94BC01051D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0D86D696-5C11-4BB4-8660-C85C9C88FA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D86D696-5C11-4BB4-8660-C85C9C88FA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D86D696-5C11-4BB4-8660-C85C9C88FA67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF04B314-F24D-4986-9763-E94BC01051D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF04B314-F24D-4986-9763-E94BC01051D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF04B314-F24D-4986-9763-E94BC01051D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF04B314-F24D-4986-9763-E94BC01051D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

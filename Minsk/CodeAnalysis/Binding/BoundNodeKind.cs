@@ -1,4 +1,4 @@
-﻿namespace CompilerInC_sharp.CodeAnalysis.Binding;
+﻿namespace Minks.CodeAnalysis.Binding;
 
 internal enum BoundNodeKind 
 {

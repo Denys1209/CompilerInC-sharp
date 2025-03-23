@@ -1,6 +1,6 @@
-﻿using CompilerInC_sharp.CodeAnalysis.Syntax;
+﻿using Minks.CodeAnalysis.Syntax;
 
-namespace CompilerInC_sharp.CodeAnalysis.Binding;
+namespace Minks.CodeAnalysis.Binding;
 
 internal sealed class BoundUnaryOperator 
 {

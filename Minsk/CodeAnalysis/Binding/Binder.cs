@@ -1,16 +1,17 @@
-﻿using CompilerInC_sharp.CodeAnalysis.Syntax;
+﻿using Minks.CodeAnalysis.Syntax;
+using Minsk.CodeAnalysis;
 using System.Net.WebSockets;
 using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 
-namespace CompilerInC_sharp.CodeAnalysis.Binding;
+namespace Minks.CodeAnalysis.Binding;
 
 internal sealed class Binder
 {
 
-    public readonly List<string> _diagnostics = new List<string>();
+    public readonly DiagnosticBag _diagnostics = new DiagnosticBag();
 
-    public IEnumerable<string> Diagnostics => _diagnostics;
+    public DiagnosticBag Diagnostics => _diagnostics;
 
 
     public BoundExpression BindExpression(ExpressionSyntax syntax)
@@ -46,7 +47,7 @@ internal sealed class Binder
 
         if (boundOperator == null)
         {
-            _diagnostics.Add($"UNary operator '{syntax.OperatorToken.Text}' is not defined for type {boundOperand.Type}");
+            _diagnostics.ReportUnderFinedUnaryOperator(syntax.OperatorToken.Span, syntax.OperatorToken.Text, boundOperand.Type);
 
             return boundOperand;
         }
@@ -63,7 +64,7 @@ internal sealed class Binder
 
         if (boundOperator == null)
         {
-            _diagnostics.Add($"UNary operator '{syntax.OperatorToken.Text}' is not defined for type {boundLeft.Type} and {boundRight.Type}");
+            _diagnostics.ReportUndefinedBinaryOperator(syntax.OperatorToken.Span, syntax.OperatorToken.Text, boundLeft.Type, boundRight.Type);
 
             return boundLeft;
         }

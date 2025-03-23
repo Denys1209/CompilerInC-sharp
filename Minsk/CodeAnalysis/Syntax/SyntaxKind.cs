@@ -1,4 +1,4 @@
-﻿namespace CompilerInC_sharp.CodeAnalysis.Syntax;
+﻿namespace Minks.CodeAnalysis.Syntax;
 
 public enum SyntaxKind
 {

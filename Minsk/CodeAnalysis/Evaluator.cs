@@ -1,8 +1,14 @@
-﻿using CompilerInC_sharp.CodeAnalysis.Binding;
-using CompilerInC_sharp.CodeAnalysis.Syntax;
+﻿using Minks.CodeAnalysis.Binding;
+using Minks.CodeAnalysis.Syntax;
 using System.Diagnostics;
 
-namespace CompilerInC_sharp.CodeAnalysis;
+namespace Minks.CodeAnalysis;
+
+
+
+
+
+
 
 internal class Evaluator
 {

@@ -1,4 +1,6 @@
-﻿namespace CompilerInC_sharp.CodeAnalysis.Syntax;
+﻿using Minsk.CodeAnalysis;
+
+namespace Minks.CodeAnalysis.Syntax;
 
 public sealed class SyntaxToken : SyntaxNode
 {
@@ -14,6 +16,8 @@ public sealed class SyntaxToken : SyntaxNode
     public int Position { get; }
     public string Text { get; }
     public object Value { get; }
+
+    public TextSpan Span => new TextSpan(Position, Text.Length);
 
     public override IEnumerable<SyntaxNode> GetChildren()
     {
