@@ -1,5 +1,6 @@
 ﻿using Minks.CodeAnalysis.Syntax;
 using Minsk.CodeAnalysis;
+using Minsk.CodeAnalysis.Syntax;
 using System.Net.WebSockets;
 using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
@@ -18,19 +19,40 @@ internal sealed class Binder
     {
         switch (syntax.Kind)
         {
+
+            case SyntaxKind.ParenthesizedExpression:
+                return BindParenthesizedExpression((ParenthesizedExpressionSyntax)syntax);
             case SyntaxKind.LiteralExpression:
                 return BindLiteralExpression((LiteralExpressionSyntax)syntax);
+            case SyntaxKind.NameExpression:
+                return BindNameExpression(((NameExpressionSyntax)syntax).Expression);
+            case SyntaxKind.AssigmentExpression:
+                return BindAssigmentExpressionSyntax(((AssigmentExpressionSyntax)syntax).Expression);
             case SyntaxKind.UnaryExpression:
                 return BindUnaryExpression((UnaryExpressionSyntax)syntax);
             case SyntaxKind.BinaryExpression:
                 return BindBinaryExpression((BinaryExpressionSyntax)syntax);
-            case SyntaxKind.ParenthesizedExpression:
-                return BindExpression(((ParenthesizedExpressionSyntax)syntax).Expression);
             default:
                 throw new Exception($"Unexprecte syntax {syntax.Kind}");
         }
 
     }
+
+    private BoundExpression BindAssigmentExpressionSyntax(ExpressionSyntax expression)
+    {
+        throw new NotImplementedException();
+    }
+
+    private BoundExpression BindNameExpression(object expression)
+    {
+        throw new NotImplementedException();
+    }
+
+    private BoundExpression BindParenthesizedExpression(ParenthesizedExpressionSyntax syntax)
+    {
+        return BindExpression(syntax.Expression);
+    }
+
     private BoundExpression BindLiteralExpression(LiteralExpressionSyntax syntax)
     {
 
