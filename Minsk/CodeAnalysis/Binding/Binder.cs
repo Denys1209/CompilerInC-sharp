@@ -11,6 +11,12 @@ internal sealed class Binder
 {
 
     public readonly DiagnosticBag _diagnostics = new DiagnosticBag();
+    private readonly Dictionary<string, object> _variables;
+
+    public Binder(Dictionary<string, object> variables)
+    {
+        _variables = variables;
+    }
 
     public DiagnosticBag Diagnostics => _diagnostics;
 
@@ -25,9 +31,9 @@ internal sealed class Binder
             case SyntaxKind.LiteralExpression:
                 return BindLiteralExpression((LiteralExpressionSyntax)syntax);
             case SyntaxKind.NameExpression:
-                return BindNameExpression(((NameExpressionSyntax)syntax).Expression);
+                return BindNameExpression((NameExpressionSyntax)syntax);
             case SyntaxKind.AssigmentExpression:
-                return BindAssigmentExpressionSyntax(((AssigmentExpressionSyntax)syntax).Expression);
+                return BindAssigmentExpression((AssigmentExpressionSyntax)syntax);
             case SyntaxKind.UnaryExpression:
                 return BindUnaryExpression((UnaryExpressionSyntax)syntax);
             case SyntaxKind.BinaryExpression:
@@ -38,14 +44,42 @@ internal sealed class Binder
 
     }
 
-    private BoundExpression BindAssigmentExpressionSyntax(ExpressionSyntax expression)
+    private BoundExpression BindAssigmentExpression(AssigmentExpressionSyntax syntax)
     {
-        throw new NotImplementedException();
+        var name = syntax.IdentifierToken.Text;
+        var boundExpression = BindExpression(syntax.Expression);
+
+        var defaultValue =
+            boundExpression.Type == typeof(int)
+            ? (object)0
+            : boundExpression.Type == typeof(bool)
+            ? (object)false
+            : null;
+
+        if (defaultValue == null)
+            throw new Exception($"Unsupported variable type: {boundExpression.Type}");
+
+
+        _variables[name] = defaultValue;
+
+        return new BoundAssignmentExpression(name, boundExpression);
+
     }
 
-    private BoundExpression BindNameExpression(object expression)
+    private BoundExpression BindNameExpression(NameExpressionSyntax syntax)
     {
-        throw new NotImplementedException();
+
+        var name = syntax.IdentifierToken.Text;
+        if (!_variables.TryGetValue(name, out var value))
+        {
+            _diagnostics.ReportundefinedName(syntax.IdentifierToken.Span, name);
+            return new BoundLiteralExpression(0);
+        }
+
+        var type = value.GetType();
+
+
+        return new BoundVariableExpression(name, type);
     }
 
     private BoundExpression BindParenthesizedExpression(ParenthesizedExpressionSyntax syntax)

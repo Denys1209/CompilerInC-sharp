@@ -55,5 +55,11 @@ internal sealed class DiagnosticBag : IEnumerable<Diagnostic>
         var message = $"Unary operator '{operatorToken}' is not defined for type {leftType} and {rightType}";
         Report(span, message);
     }
+
+    internal void ReportundefinedName(TextSpan span, string name)
+    {
+        var message = $"Variable '{name}' doesn't exist";
+        Report(span, message);
+    }
 }
 

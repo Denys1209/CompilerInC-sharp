@@ -66,7 +66,7 @@ internal sealed class Parser
     }
     public SyntaxTree Parse()
     {
-        var expresion = ParseBinaryExpression();
+        var expresion = ParseExpression();
         var endOfFileToken = MatchToken(SyntaxKind.EndOfFileToken);
         return new SyntaxTree(_diagnostics, expresion, endOfFileToken);
     }
@@ -80,7 +80,7 @@ internal sealed class Parser
     {
 
         if (Peek(0).Kind == SyntaxKind.IdentifierToken &&
-            Peek(1).Kind == SyntaxKind.EqualsEqualsToken)
+            Peek(1).Kind == SyntaxKind.EqualsToken)
         {
             var identifierToken = NextToken();
             var operatorToken = NextToken();

@@ -8,6 +8,7 @@ class Program
     static void Main(string[] args)
     {
         var showTree = false;
+        var variables = new Dictionary<string, object>();
 
         while (true)
         {
@@ -30,7 +31,7 @@ class Program
 
             var syntaxTree = SyntaxTree.Parse(line);
             var compilation = new Compilation(syntaxTree);
-            var result = compilation.Evaluate();
+            var result = compilation.Evaluate(variables);
 
             var diagnostics = result.Diagnostics;
 
@@ -51,8 +52,10 @@ class Program
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
 
-                foreach (var diagnostic in syntaxTree.Diagnostics)
+                foreach (var diagnostic in result.Diagnostics)
                 {
+                    Console.WriteLine();
+
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine(diagnostic);
                     Console.ResetColor();

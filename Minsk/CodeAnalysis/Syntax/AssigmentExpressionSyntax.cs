@@ -10,7 +10,7 @@ class AssigmentExpressionSyntax : ExpressionSyntax
         EqualsToken = equalsToken;
         Expression = expression;
     }
-    public override SyntaxKind Kind => SyntaxKind.BinaryExpression;
+    public override SyntaxKind Kind => SyntaxKind.AssigmentExpression;
 
     public SyntaxToken IdentifierToken { get; }
     public SyntaxToken EqualsToken { get; }
