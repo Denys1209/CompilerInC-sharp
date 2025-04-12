@@ -120,7 +120,7 @@ internal sealed class Lexer
                 if (Lookahead == '|')
                 {
                     _position += 2;
-                    return new SyntaxToken(SyntaxKind.PipePipeToken, start, "&&", null);
+                    return new SyntaxToken(SyntaxKind.PipePipeToken, start, "||", null);
                 }
                 break;
             case '=':
