@@ -2,7 +2,7 @@ using Minks.CodeAnalysis.Syntax;
 
 namespace Minsk.Test.CodeAnalysis.Syntax;
 
-public class LexerTest
+public class LexerTests
 {
     [Theory]
     [MemberData(nameof(GetTokensData))]
