@@ -15,7 +15,7 @@ internal sealed class BoundUnaryOperator
     {
         SyntaxKind = syntaxKind;
         Kind = kind;
-        Type = operandType;
+        OperandType = operandType;
         Type = resultType;
     }
 
@@ -28,7 +28,7 @@ internal sealed class BoundUnaryOperator
     {
         new BoundUnaryOperator(SyntaxKind.BangToken, BoundUnaryOperatorKind.LogicalNegation, typeof(bool)),
         new BoundUnaryOperator(SyntaxKind.PlusToken, BoundUnaryOperatorKind.Identity, typeof(int)),
-        new BoundUnaryOperator(SyntaxKind.MinusToken, BoundUnaryOperatorKind.Identity, typeof(int)),
+        new BoundUnaryOperator(SyntaxKind.MinusToken, BoundUnaryOperatorKind.Negation, typeof(int)),
 
     }; 
 

@@ -136,7 +136,7 @@ internal sealed class Parser
             case SyntaxKind.OpenParenthesisToken:
                 {
                     var left = NextToken();
-                    var expression = ParseBinaryExpression();
+                    var expression = ParseExpression();
                     var right = MatchToken(SyntaxKind.CloseParenthesisToken);
                     return new ParenthesizedExpressionSyntax(left, expression, right);
                 }

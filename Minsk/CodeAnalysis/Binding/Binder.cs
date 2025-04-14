@@ -53,8 +53,10 @@ internal sealed class Binder
         var variable = new VariableSymbol(name, boundExpression.Type);
 
         var existingVariable = _variables.Keys.FirstOrDefault(v => v.Name == name);
-        if (existingVariable != null) 
+        if (existingVariable != null)
             _variables.Remove(existingVariable);
+        else
+            _variables[variable] = null;
             
 
         return new BoundAssignmentExpression(variable, boundExpression);
